@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::get('/viajero', function () {
     return view('viajero', ['title' => '¿Qué tipo de viajero eres?']);
 });
+
+Route::get('/busqueda', function () {
+    return view('busqueda', ['title' => 'Búsqueda']);
+});

@@ -41,6 +41,12 @@
   <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">MENÚ</p>
 
   <ul class="nav flex-column bg-white mb-0">
+  <li class="nav-item">
+      <a href="/busqueda" class="nav-link text-dark font-italic bg-light">
+        <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+        Búsqueda
+      </a>
+    </li>
     <li class="nav-item">
       <a href="/viajero" class="nav-link text-dark font-italic bg-light">
         <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>

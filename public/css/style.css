@@ -229,3 +229,37 @@ footer {
     margin: 5px;
     line-height: 30px;
 }
+
+.grey-border {
+    border-style: groove;
+}
+
+.width-90 {
+    width: 90%;
+}
+
+.green-border {
+    border-style: solid;
+    border-color: #08AE9E;
+}
+
+.flex-container-resultados {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: 100%;
+    align-items: center;
+}
+
+.flex-container-resultados>div {
+    width: 70%;
+    margin: 5px;
+    text-align: center;
+    height: 110px;
+    border-style: groove;
+}
+
+.img-results {
+    height: 100px;
+    width: 300px;
+}

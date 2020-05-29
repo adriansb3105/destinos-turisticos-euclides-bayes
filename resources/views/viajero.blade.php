@@ -90,7 +90,8 @@
             </div>
         </form>
 
-        <h3 class="mt-2 green-font">Su tipo de viajero es <span id="tipoViajero"></span></h3>
+        <!-- Cambiar usuario por el que se envia desde Euclides -->
+        <h5 class="mt-2 green-font">Su tipo de viajero es <span class="text-bold" id="tipoViajero">X</span></h5>
     </div>
 </div>
 
