@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', ['title' => 'Tu lugar ideal para turistear']);
+});
+
+Route::get('/viajero', function () {
+    return view('viajero', ['title' => '¿Qué tipo de viajero eres?']);
 });
