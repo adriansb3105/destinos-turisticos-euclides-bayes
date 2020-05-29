@@ -24,3 +24,7 @@ Route::get('/viajero', function () {
 Route::get('/busqueda', function () {
     return view('busqueda', ['title' => 'Búsqueda']);
 });
+
+Route::get('/administrador', function () {
+    return view('administrador', ['title' => 'Administrador']);
+});
