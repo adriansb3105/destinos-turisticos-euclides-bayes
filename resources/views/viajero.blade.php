@@ -47,6 +47,9 @@
                 <label for="destino">Destino</label>
                 <select class="form-control" id="destino">
                     <option value="playa">Playa</option>
+                    <option value="ciudad">Ciudad</option>
+                    <option value="montaña">Montaña</option>
+                    <option value="rural">Rural</option>
                 </select>
             </div>
 
@@ -54,6 +57,9 @@
                 <label for="cantidad">Cantidad de personas</label>
                 <select class="form-control" id="cantidad">
                     <option value="familia">Familia</option>
+                    <option value="pareja">Pareja</option>
+                    <option value="amigos">Amigos</option>
+                    <option value="solo">Solo</option>
                 </select>
             </div>
 
@@ -61,21 +67,30 @@
                 <label for="edad">Rango de edad</label>
                 <select class="form-control" id="edad">
                     <option value="todas">Todas las edades</option>
+                    <option value="joven">De 18 a 35 años</option>
+                    <option value="adulto">De 36 a 55 años</option>
+                    <option value="anciano">Mayores o iguales a 56 años</option>
                 </select>
             </div>
 
             <div class="form-group mt-3">
                 <label for="interes">Intereses</label>
                 <select class="form-control" id="interes">
+                    <option value="cultura">Cultura</option>
+                    <option value="historia">Historia</option>
                     <option value="relajarse">Relajarse</option>
+                    <option value="actualidad">Actualidad</option>
+                    <option value="gastronomía">Gastronomía</option>
+                    <option value="entretenerse">Entretenerse</option>
                 </select>
             </div>
 
             <div class="content">
-                <button type="submit" class="btn btn-round">Registrarse</button>
+                <button type="submit" class="btn btn-round">Descubrir</button>
             </div>
         </form>
 
+        <h3 class="mt-2 green-font">Su tipo de viajero es <span id="tipoViajero"></span></h3>
     </div>
 </div>
 
