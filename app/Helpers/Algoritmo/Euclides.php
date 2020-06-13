@@ -21,7 +21,7 @@ class Euclides
         $valorRespuesta = $respuestas[$i];
         $valorActual = $actual[$i];
 
-        $valor += pow(ConvertirDatos::valor($valorRespuesta) - ConvertirDatos::valor($valorActual), 2 );
+        $valor += pow($valorRespuesta - $valorActual, 2 );
       }
 
       $valor = sqrt($valor);
