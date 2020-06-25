@@ -16,7 +16,7 @@
                 <select class="form-control" id="destino">
                     <option value="playa">Playa</option>
                     <option value="ciudad">Ciudad</option>
-                    <option value="montaña">Montaña</option>
+                    <option value="montana">Montaña</option>
                     <option value="rural">Rural</option>
                 </select>
             </div>
@@ -34,7 +34,6 @@
             <div class="form-group mt-3">
                 <label for="edad">Rango de edad</label>
                 <select class="form-control" id="edad">
-                    <option value="todas">Todas las edades</option>
                     <option value="joven">De 18 a 35 años</option>
                     <option value="adulto">De 36 a 55 años</option>
                     <option value="anciano">Mayores o iguales a 56 años</option>
@@ -46,10 +45,10 @@
                 <select class="form-control" id="interes">
                     <option value="cultura">Cultura</option>
                     <option value="historia">Historia</option>
-                    <option value="relajarse">Relajarse</option>
+                    <option value="relajacion">Relajación</option>
                     <option value="actualidad">Actualidad</option>
-                    <option value="gastronomía">Gastronomía</option>
-                    <option value="entretenerse">Entretenerse</option>
+                    <option value="gastronomia">Gastronomía</option>
+                    <option value="entretenimiento">Entretenimiento</option>
                 </select>
             </div>
 

@@ -22,7 +22,7 @@
     
     @include('/partials/menu')
 
-    <div class="page-content p-3  mt-5" id="content">
+    <div class="page-content p-3 mt-5" id="content">
         @yield('content')
 
         @include('/partials/footer')
