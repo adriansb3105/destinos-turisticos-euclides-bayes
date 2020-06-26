@@ -21,3 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('atractivos/{destino}/{persona}/{edad}/{interes}', ['as' => 'atractivos', 'uses' => 'AtractivosAppController@getAtractivos']);
 
 Route::get('atractivosTodos', 'AtractivosAppController@getAtractivosTodos');
+
+Route::post('agregarAtractivo', 'AtractivosAppController@agregarAtractivo');

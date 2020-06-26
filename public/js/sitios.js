@@ -20,7 +20,7 @@ function pagination() {
         let fin = 0;
         noResultados.style.display = "none";
 
-        paginacion.innerHTML = `<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Anterior</a></li>`;
+        /*paginacion.innerHTML = `<li class="page-item disabled"><a class="page-link" href="javascript:prevPage()" id="btn_prev" tabindex="-1">Anterior</a></li>`;
         if (atractivos.length > limite) {
             for (let i = 1; i <= numeroTabs; i++) {
                 if (i === 1) {
@@ -33,15 +33,18 @@ function pagination() {
             inicio = fin = 0;
             paginacion.innerHTML += `<li class="page-item active"><a class="page-link" href="#">${i}</a></li>`;
         }
-        paginacion.innerHTML += `<li class="page-item disabled"><a class="page-link" href="#">Siguiente</a></li>`;
+        paginacion.innerHTML += `<li class="page-item disabled"><a class="page-link" href="javascript:nextPage()" id="btn_next">Siguiente</a></li>`;
+*/
+        cargarTabla();
 
-        cargarTabla(inicio, fin);
     } else {
         noResultados.style.display = "block";
     }
 }
 
-function cargarTabla(inicio, fin) {
+function cargarTabla() {
+    console.log();
+
     let tabla = document.getElementById("tablaAtractivos");
 
     for (let i = 0; i < atractivos.length; i++) {
@@ -52,8 +55,7 @@ function cargarTabla(inicio, fin) {
         let celdaNombre = fila.insertCell(1);
         let celdaLugar = fila.insertCell(2);
         let celdaClase = fila.insertCell(3);
-        let celdaEditar = fila.insertCell(4);
-        let celdaEliminar = fila.insertCell(5);
+        let celdaAccion = fila.insertCell(4);
         //let celdaUbicacion = fila.insertCell(3);
         //let celdaDescripcion = fila.insertCell(4);
 
@@ -86,9 +88,8 @@ function cargarTabla(inicio, fin) {
         celdaNombre.innerHTML = atractivos[i].nombre;
         celdaLugar.innerHTML = atractivos[i].lugar;
 
-        //celdaEditar.innerHTML = `<button type="button" onclick="editarSitio(${atractivos[i]});" class="btn btn-warning btn-sm mt-4 mb-4 float-right">Editar</button>`;
-        celdaEditar.innerHTML = `<button onclick="llenarEditarSitio(${JSON.stringify(atractivos[i]).split('"').join("&quot;")});"  type="button" class="btn btn-warning btn-sm mt-4 mb-4 float-right" data-toggle="modal" data-target="#exampleModalCenterEditar">Editar</button>`;
-        celdaEliminar.innerHTML = `<button type="button" onclick="eliminarSitio(${atractivos[i]});" class="btn btn-danger btn-sm mt-4 mb-4 float-right">Eliminar</button>`;
+        celdaAccion.innerHTML += `<button type="button" onclick="eliminarSitio(${atractivos[i]});" class="btn btn-danger btn-sm mt-4 mb-4 ml-1 float-right">Eliminar</button>`;
+        celdaAccion.innerHTML += `<button onclick="llenarEditarSitio(${JSON.stringify(atractivos[i]).split('"').join("&quot;")});" type="button" class="btn btn-warning btn-sm mt-4 mb-4 mr-1 float-right" data-toggle="modal" data-target="#exampleModalCenterEditar">Editar</button>`;
 
         //celdaUbicacion.innerHTML = atractivos[i].ubicacion;
         //celdaDescripcion.innerHTML = atractivos[i].descripcion;
@@ -104,12 +105,17 @@ function insertarSitio() {
     let mapa = ""; //document.getElementById('mapa').value.valueOf();
     let video = document.getElementById('video').value.valueOf();
 
-    console.log(nombre, tipo, imagenes, lugar, mensaje, mapa, video);
+    $.ajax({
+        type: "POST",
+        url: '/api/agregarAtractivo',
+        success: function(data) {
+            console.log(data);
+        }
+    });
 }
 
 function llenarEditarSitio(atractivo) {
-    console.log(atractivo);
-
+    document.getElementById('idEditar').value = atractivo.id;
     document.getElementById('nombreEditar').value = atractivo.nombre;
     document.getElementById('lugarEditar').value = atractivo.lugar;
     //document.getElementById('imagenesEditar').value = atractivo.imagenes;
@@ -145,7 +151,7 @@ function llenarEditarSitio(atractivo) {
 }
 
 function editarSitio() {
-
+    console.log(document.getElementById('idEditar').value);
 }
 
 function eliminarSitio(atractivo) {

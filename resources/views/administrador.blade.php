@@ -2,6 +2,8 @@
 
 @section('content')
 
+<link href="{{ asset('/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+
 <button type="button" class="btn btn-info mt-4 mb-4 float-right" data-toggle="modal" data-target="#exampleModalCenter">
     Agregar sitio turístico
 </button>
@@ -9,17 +11,18 @@
 <table id="tablaAtractivos" class="table table-hover">
     <thead>
         <tr>
+            <th scope="col"></th>
             <th scope="col">Nombre</th>
-            <th scope="col">Imagen</th>
             <th scope="col">Lugar</th>
             <th scope="col">Tipo</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
+            <th scope="col">Acción</th>
             <!-- <th scope="col">Ubicación</th>
             <th scope="col">Descripción</th> -->
         </tr>
     </thead>
+    <tbody></tbody>
 </table>
+
 
 <h3 id="NoResultados">No se encontraron atractivos turísticos</h3>
 
@@ -40,10 +43,13 @@
     </ul>
 </nav>-->
 
+<!--
 <nav aria-label="paginacion">
     <ul id="paginacion" class="pagination justify-content-end">
     </ul>
 </nav>
+-->
+
 
 <!-- Modal Agregar -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -167,6 +173,8 @@
             </div>
             <div class="modal-body">
                 <div>
+                    <p id="idEditar" hidden>id</p>
+
                     <div class="form-group">
                         <label for="nombreEditar">Ingrese el nombre del sitio turístico</label>
                         <input type="text" class="form-control" id="nombreEditar" placeholder="Ingrese el nombre del sitio turístico">
@@ -265,6 +273,9 @@
     </div>
 </div>
 
+<script src="{{ asset('/js/jquery-3.5.1.js') }}"></script>
+<script src="{{ asset('/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('/js/sitios.js') }}"></script>
 
 @endsection

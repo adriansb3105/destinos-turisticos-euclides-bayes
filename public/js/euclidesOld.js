@@ -1,5 +1,5 @@
 /**
- * Función que calcula, toma como parámetro los valores ca, ec, ea, or
+ * Función que calcula los sitios basada en Euclides
  */
 function euclides(respuestas, datos) {
     /**

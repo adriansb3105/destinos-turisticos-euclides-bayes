@@ -8,12 +8,13 @@
         <p>Después seleccione el resultado deseado y haga click sobre la imagen.</p>
     </div>
 </div>
+
 <div class="row mt-3">
     <div class="col-3">
-        <form>
+        <div>
             <div class="form-group mt-3">
-                <label for="destino">Destino</label>
-                <select class="form-control" id="destino">
+                <label for="destinoBusqueda">Destino</label>
+                <select class="form-control" id="destinoBusqueda">
                     <option value="playa">Playa</option>
                     <option value="ciudad">Ciudad</option>
                     <option value="montana">Montaña</option>
@@ -22,8 +23,8 @@
             </div>
 
             <div class="form-group mt-3">
-                <label for="cantidad">Cantidad de personas</label>
-                <select class="form-control" id="cantidad">
+                <label for="cantidadBusqueda">Cantidad de personas</label>
+                <select class="form-control" id="cantidadBusqueda">
                     <option value="familia">Familia</option>
                     <option value="pareja">Pareja</option>
                     <option value="amigos">Amigos</option>
@@ -32,8 +33,8 @@
             </div>
 
             <div class="form-group mt-3">
-                <label for="edad">Rango de edad</label>
-                <select class="form-control" id="edad">
+                <label for="edadBusqueda">Rango de edad</label>
+                <select class="form-control" id="edadBusqueda">
                     <option value="joven">De 18 a 35 años</option>
                     <option value="adulto">De 36 a 55 años</option>
                     <option value="anciano">Mayores o iguales a 56 años</option>
@@ -41,8 +42,8 @@
             </div>
 
             <div class="form-group mt-3">
-                <label for="interes">Intereses</label>
-                <select class="form-control" id="interes">
+                <label for="interesBusqueda">Intereses</label>
+                <select class="form-control" id="interesBusqueda">
                     <option value="cultura">Cultura</option>
                     <option value="historia">Historia</option>
                     <option value="relajacion">Relajación</option>
@@ -53,13 +54,13 @@
             </div>
 
             <div class="content">
-                <button type="submit" class="btn btn-round">Filtrar</button>
+                <button onclick="calcularSitios();" class="btn btn-round">Filtrar</button>
             </div>
-        </form>
+        </div>
 
         <!-- Variar mansaje si se encuentran 0, 1 o varios resultados -->
         <div class="green-border text-center">
-            <h5 class="mt-2">Se encontraron <span class="text-bold">X</span> resultados</h5>
+            <h5 class="mt-2">Se encontraron <span id="cantidadResultados" class="text-bold">X</span> resultados</h5>
         </div>
     </div>
 
@@ -70,51 +71,9 @@
         </div>
         <div class="row mt-3">
             <div class="col">
-                <div class="flex-container-resultados">
-                    <div class="row">
-                        <div class="col-5">
-                            <img src="{{ asset('/img/lapenca.png') }}" alt="principal" class="img-results">
-                        </div>
-                        <div class="col-5 mt-2">
-                            <p>Cantón, Provincia</p>
-                            <p>Playa #1</p>
-                        </div>
-                        <div class="col-2">
-                            <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#exampleModalCenter">
-                                Ver
-                            </button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-5">
-                            <img src="{{ asset('/img/lapenca.png') }}" alt="principal" class="img-results">
-                        </div>
-                        <div class="col-5 mt-2">
-                            <p>Cantón, Provincia</p>
-                            <p>Playa #2</p>
-                        </div>
-                        <div class="col-2">
-                            <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#exampleModalCenter">
-                                Ver
-                            </button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-5">
-                            <img src="{{ asset('/img/lapenca.png') }}" alt="principal" class="img-results">
-                        </div>
-                        <div class="col-5 mt-2">
-                            <p>Cantón, Provincia</p>
-                            <p>Playa #3</p>
-                        </div>
-                        <div class="col-2">
-                            <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#exampleModalCenter">
-                                Ver
-                            </button>
-                        </div>
-                    </div>
-
-                    <nav aria-label="Page navigation example" class="mt-2">
+                <div id="resultados" class="flex-container-resultados">
+                    
+                    <!-- <nav aria-label="Page navigation example" class="mt-2">
                         <ul class="pagination justify-content-end">
                             <li class="page-item disabled">
                                 <a class="page-link" href="#" tabindex="-1">Previous</a>
@@ -126,13 +85,12 @@
                                 <a class="page-link" href="#">Next</a>
                             </li>
                         </ul>
-                    </nav>
+                    </nav> -->
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -204,5 +162,7 @@
         </div>
     </div>
 </div>
+
+<script src="{{ asset('/js/busqueda.js') }}"></script>
 
 @endsection

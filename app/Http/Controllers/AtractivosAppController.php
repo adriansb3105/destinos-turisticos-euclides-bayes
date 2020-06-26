@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Algoritmo\Euclides;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
@@ -16,7 +17,7 @@ class AtractivosAppController extends Controller
 
         $clase = Euclides::euclides($busqueda, $tipos);
 
-        $atractivos = DB::select("select id, nombre, imagen, lugar, ubicacion, descripcion, clase from atractivos where clase='".$clase."';");
+        $atractivos = DB::select("select id, nombre, imagen, lugar, ubicacion, descripcion, video, clase from atractivos where clase='".$clase."';");
         
         return $atractivos;
     }
@@ -25,5 +26,10 @@ class AtractivosAppController extends Controller
     {
         $atractivos = DB::table('atractivos')->select('id', 'nombre', 'imagen', 'lugar', 'ubicacion', 'descripcion', 'video', 'clase')->get();
         return $atractivos;
+    }
+
+    public function agregarAtractivo(Request $req)
+    {
+        return $req->input();
     }
 }
