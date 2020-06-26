@@ -23,7 +23,7 @@ class AtractivosAppController extends Controller
 
     public function getAtractivosTodos()
     {
-        $atractivos = DB::table('atractivos')->select('id', 'nombre', 'imagen', 'lugar', 'ubicacion', 'descripcion', 'clase')->get();
+        $atractivos = DB::table('atractivos')->select('id', 'nombre', 'imagen', 'lugar', 'ubicacion', 'descripcion', 'video', 'clase')->get();
         return $atractivos;
     }
 }

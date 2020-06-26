@@ -263,3 +263,9 @@ footer {
     height: 100px;
     width: 300px;
 }
+
+#tablaAtractivos th,
+td {
+    text-align: center;
+    vertical-align: middle;
+}
