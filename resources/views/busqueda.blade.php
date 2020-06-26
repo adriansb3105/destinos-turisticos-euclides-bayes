@@ -97,47 +97,19 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Playa #</h5>
+                <h5 class="modal-title" id="nombreBusqueda"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        </ol>
+                    <div class="carousel slide">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img class="d-block w-100" src="{{ asset('/img/lapenca.png') }}" alt="First slide">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <p>Cantón, Provincia</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img class="d-block w-100" src="{{ asset('/img/lapenca.png') }}" alt="Second slide">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <p>Cantón, Provincia</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img class="d-block w-100" src="{{ asset('/img/lapenca.png') }}" alt="Third slide">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <p>Cantón, Provincia</p>
-                                </div>
+                            <div id="imagenLugarBusqueda" class="carousel-item active">
+                                
                             </div>
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
                     </div>
                 </div>
 
@@ -147,12 +119,11 @@
                     </div>
 
                     <div class="col">
-                        <p class="mt-5">Excelente lugar para vacacionar con la familia y los amigos, a tan solo 30 minutos de Liberia usted podrá disfrutar de esta hermosa playa.</p>
+                        <p id="descripcionBusqueda" class="mt-5"></p>
                     </div>
                 </div>
 
-                <div class="row flex-center">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/YavNJawZ52A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div id="videoBusqueda" class="row flex-center">                    
                 </div>
 
             </div>
