@@ -37,15 +37,16 @@
             </div>
         </div>
     </div>
+
     <div class="col-3">
         <div class="content">
             <h2 class="grey-font mt-5">Descubre tu tipo</h2>
         </div>
 
-        <form>
+        <div>
             <div class="form-group mt-3">
-                <label for="destino">Destino</label>
-                <select class="form-control" id="destino">
+                <label for="destinoTipo">Destino</label>
+                <select class="form-control" id="destinoTipo">
                     <option value="playa">Playa</option>
                     <option value="ciudad">Ciudad</option>
                     <option value="montana">Montaña</option>
@@ -54,8 +55,8 @@
             </div>
 
             <div class="form-group mt-3">
-                <label for="cantidad">Cantidad de personas</label>
-                <select class="form-control" id="cantidad">
+                <label for="cantidadTipo">Cantidad de personas</label>
+                <select class="form-control" id="cantidadTipo">
                     <option value="familia">Familia</option>
                     <option value="pareja">Pareja</option>
                     <option value="amigos">Amigos</option>
@@ -64,8 +65,8 @@
             </div>
 
             <div class="form-group mt-3">
-                <label for="edad">Rango de edad</label>
-                <select class="form-control" id="edad">
+                <label for="edadTipo">Rango de edad</label>
+                <select class="form-control" id="edadTipo">
                     <option value="joven">De 18 a 35 años</option>
                     <option value="adulto">De 36 a 55 años</option>
                     <option value="anciano">Mayores o iguales a 56 años</option>
@@ -73,8 +74,8 @@
             </div>
 
             <div class="form-group mt-3">
-                <label for="interes">Intereses</label>
-                <select class="form-control" id="interes">
+                <label for="interesTipo">Intereses</label>
+                <select class="form-control" id="interesTipo">
                     <option value="cultura">Cultura</option>
                     <option value="historia">Historia</option>
                     <option value="relajacion">Relajación</option>
@@ -85,12 +86,11 @@
             </div>
 
             <div class="content">
-                <button type="submit" class="btn btn-round">Descubrir</button>
+                <button onclick="descubrir();" class="btn btn-round">Descubrir</button>
             </div>
-        </form>
+        </div>
 
-        <!-- Cambiar usuario por el que se envia desde Euclides -->
-        <h5 class="mt-2 green-font">Su tipo de viajero es <span class="text-bold" id="tipoViajero">X</span></h5>
+        <h5 id="msjTipo" class="mt-2 green-font"></h5>
     </div>
 </div>
 

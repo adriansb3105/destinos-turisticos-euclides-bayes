@@ -1,5 +1,4 @@
 function description(tipo) {
-
     let descripcionObjetivo = '';
     let descripcionDestino = '';
     let descripcionVolumen = '';
@@ -73,4 +72,46 @@ function description(tipo) {
     document.getElementById('descripcionEdad').innerHTML = `Suelen viajar ${descripcionEdad}`;
     document.getElementById('descripcionDisposicion').innerHTML = `Su indice de previsión de consumo de viajes es de ${descripcionDisposicion}%`;
     document.getElementById('descripcionIntereses').innerHTML = `Lo que busca este tipo de viajero es ${descripcionIntereses}`;
+}
+
+function descubrir() {
+    let clase = {};
+
+    let destinoTipo = document.getElementById('destinoTipo').value.valueOf();
+    let cantidadTipo = document.getElementById('cantidadTipo').value.valueOf();
+    let edadTipo = document.getElementById('edadTipo').value.valueOf();
+    let interesTipo = document.getElementById('interesTipo').value.valueOf();
+
+    $.ajax({
+        type: "GET",
+        url: `/api/tipos/${destinoTipo}/${cantidadTipo}/${edadTipo}/${interesTipo}`,
+        success: function(data) {
+            switch (data) {
+                case `c1`:
+                    clase = `Pack`;
+                    break;
+                case `c2`:
+                    clase = `Urbano`;
+                    break;
+                case `c3`:
+                    clase = `Playero`;
+                    break;
+                case `c4`:
+                    clase = `Visitante`;
+                    break;
+                case `c5`:
+                    clase = `Gourmet`;
+                    break;
+                case `c6`:
+                    clase = `Insaciable`;
+                    break;
+                default:
+                    clase = `Oportunista`;
+                    break;
+            }
+
+            let msjTipo = document.getElementById('msjTipo');
+            msjTipo.innerHTML = `Su tipo de viajero es <span class="text-bold">${clase}</span>`;
+        }
+    });
 }

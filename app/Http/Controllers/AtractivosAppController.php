@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class AtractivosAppController extends Controller
 {
-    public function getAtractivos($destino, $persona, $edad, $interes)
+    public function getAtractivosEuclides($destino, $persona, $edad, $interes)
     {
         $tipos = DB::table('valores')->select('destino', 'persona', 'edad', 'interes', 'clase')->get();
 
@@ -19,6 +19,17 @@ class AtractivosAppController extends Controller
         $atractivos = DB::select("select id, nombre, imagen, lugar, ubicacion, descripcion, video, clase from atractivos where clase='".$clase."';");
         
         return $atractivos;
+    }
+
+    public function getTiposBayes($destino, $persona, $edad, $interes)
+    {
+        $tipos = DB::table('valores')->select('destino', 'persona', 'edad', 'interes', 'clase')->get();
+
+        $busqueda = [$destino, $persona, $edad, $interes];
+
+        $clase = Euclides::euclides($busqueda, $tipos);
+        
+        return $clase;
     }
 
     public function getAtractivosTodos()
