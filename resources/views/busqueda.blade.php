@@ -60,19 +60,19 @@
 
         <!-- Variar mansaje si se encuentran 0, 1 o varios resultados -->
         <div class="green-border text-center">
-            <h5 class="mt-2">Se encontraron <span id="cantidadResultados" class="text-bold">X</span> resultados</h5>
+            <h5 id="msjResultados" class="mt-2"></h5>
         </div>
     </div>
 
     <div class="col-9">
         <div class="row">
             <!-- Cambiar usuario por el que se envia desde Euclides -->
-            <h5 class="mt-2 green-font">Su tipo de viajero es <span class="text-bold" id="tipoViajeroBusqueda">X</span></h5>
+            <h5 id="msjTipoViajero" class="mt-2 green-font">Su tipo de viajero es <span class="text-bold" id="tipoViajeroBusqueda">X</span></h5>
         </div>
         <div class="row mt-3">
             <div class="col">
                 <div id="resultados" class="flex-container-resultados">
-                    
+
                     <!-- <nav aria-label="Page navigation example" class="mt-2">
                         <ul class="pagination justify-content-end">
                             <li class="page-item disabled">
@@ -93,7 +93,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalCenterVer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterVerTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -107,7 +107,7 @@
                     <div class="carousel slide">
                         <div class="carousel-inner">
                             <div id="imagenLugarBusqueda" class="carousel-item active">
-                                
+
                             </div>
                         </div>
                     </div>
@@ -123,7 +123,7 @@
                     </div>
                 </div>
 
-                <div id="videoBusqueda" class="row flex-center">                    
+                <div id="videoBusqueda" class="row flex-center">
                 </div>
 
             </div>

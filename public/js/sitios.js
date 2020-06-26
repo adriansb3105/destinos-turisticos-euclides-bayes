@@ -18,7 +18,7 @@ function pagination() {
     if (atractivos.length) {
         let inicio = 0;
         let fin = 0;
-        noResultados.style.display = "none";
+        //noResultados.style.display = "none";
 
         /*paginacion.innerHTML = `<li class="page-item disabled"><a class="page-link" href="javascript:prevPage()" id="btn_prev" tabindex="-1">Anterior</a></li>`;
         if (atractivos.length > limite) {
@@ -43,7 +43,6 @@ function pagination() {
 }
 
 function cargarTabla() {
-    console.log();
 
     let tabla = document.getElementById("tablaAtractivos");
 
