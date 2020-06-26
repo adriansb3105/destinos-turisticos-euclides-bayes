@@ -5,8 +5,6 @@ $(function() {
         $iframe = $(this).find("iframe");
         $iframe.attr("src", $iframe.attr("src"));
     });
-
-    msjTipoViajero.style.display = "none";
 });
 
 /**

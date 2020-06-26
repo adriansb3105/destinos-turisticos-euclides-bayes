@@ -24,4 +24,6 @@ Route::get('tipos/{destino}/{persona}/{edad}/{interes}', ['as' => 'tipos', 'uses
 
 Route::get('atractivosTodos', 'AtractivosAppController@getAtractivosTodos');
 
-Route::post('agregarAtractivo', 'AtractivosAppController@agregarAtractivo');
+Route::get('agregarAtractivo', 'AtractivosAppController@agregarAtractivo');
+
+Route::get('administrador/{usuario}/{contrasena}', ['as' => 'usuarios', 'uses' => 'UsuariosController@login']);
