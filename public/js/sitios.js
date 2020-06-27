@@ -20,48 +20,34 @@ function insertarSitio() {
     let tipo = document.getElementById('tipo').value.valueOf();
     let lugar = document.getElementById('lugar').value.valueOf();
     let mensaje = document.getElementById('mensaje').value.valueOf();
+    let destino = document.getElementById('destino').value.valueOf();
+    let persona = document.getElementById('persona').value.valueOf();
+    let edad = document.getElementById('edad').value.valueOf();
+    let interes = document.getElementById('interes').value.valueOf();
     let mapa = "mapa";
+    let imagen = 'https://upload.wikimedia.org/wikipedia/commons/1/12/Sanatorio_Duran_%281%29.JPG';
     let video = document.getElementById('video').value.valueOf();
 
-    switch (tipo) {
-        case `pack`:
-            tipo = `c1`;
-            break;
-        case `urbano`:
-            tipo = `c2`;
-            break;
-        case `playero`:
-            tipo = `c3`;
-            break;
-        case `visitante`:
-            tipo = `c4`;
-            break;
-        case `gourmet`:
-            tipo = `c5`;
-            break;
-        case `insaciable`:
-            tipo = `c6`;
-            break;
-        default:
-            tipo = `c7`;
-            break;
-    }
-
-    if (nombre && tipo && lugar && mensaje && video) {
+    if (nombre && tipo && lugar && mensaje && mapa && imagen && video && destino && persona && edad && interes) {
         $.ajax({
             type: "POST",
-            //url: `/api/agregarAtractivo/${nombre}/${tipo}/${imagen}/${lugar}/${mensaje}/${mapa}/${video}`,
             url: `/api/agregarAtractivo`,
             data: {
                 nombre: nombre,
                 tipo: tipo,
-                imagen: 'http://www.sanisidrolonas.com.ar/wp-content/uploads/2013/07/sin-imagen3.jpg',
+                imagen: imagen,
                 lugar: lugar,
                 mensaje: mensaje,
                 mapa: mapa,
-                video: video
+                video: video,
+                destino: destino,
+                persona: persona,
+                edad: edad,
+                interes: interes
             },
             success: function(data) {
+                document.getElementById('respuesta').innerHTML = "Se ha insertado el sitio correctamente";
+                console.log("Se ha insertado el sitio correctamente");
 
             }
         });

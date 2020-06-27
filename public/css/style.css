@@ -264,7 +264,7 @@ footer {
     width: 300px;
 }
 
-#our-table th,
+table th,
 td {
     text-align: center;
     vertical-align: middle;
@@ -272,4 +272,8 @@ td {
 
 .red-color {
     color: red;
+}
+
+.green-color {
+    color: green;
 }

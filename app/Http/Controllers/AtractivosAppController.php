@@ -17,11 +17,11 @@ class AtractivosAppController extends Controller
 
         $clase = Euclides::euclides($busqueda, $tipos);
 
-        $atractivos = DB::select("select id, nombre, imagen, lugar, ubicacion, descripcion, video, clase from atractivos where clase='".$clase."';");
-        
+        $atractivos = DB::select("select id, nombre, imagen, lugar, ubicacion, descripcion, video, clase from atractivos where clase='" . $clase . "';");
+
         return $atractivos;
     }
-    
+
     public function getTiposBayes(Request $request)
     {
         $destino = $request->input('destino');
@@ -43,7 +43,7 @@ class AtractivosAppController extends Controller
         $atractivos = DB::table('atractivos')->select('id', 'nombre', 'imagen', 'lugar', 'ubicacion', 'descripcion', 'video', 'clase')->get();
         return $atractivos;
     }
-/*
+    /*
     public function agregarAtractivo($nombre, $tipo, $imagen, $lugar, $mensaje, $mapa, $video)
     {
         //$result = DB::insert("insert into atractivos(nombre, imagen, lugar, ubicacion, descripcion, video, clase) values(".$nombre.",".$imagen.",".$lugar.",".$mapa.",".$mensaje.",".$video.",".$tipo.");");
@@ -61,9 +61,32 @@ class AtractivosAppController extends Controller
         $mensaje = $request->input('mensaje');
         $mapa = $request->input('mapa');
         $video = $request->input('video');
+        $destino = $request->input('destino');
+        $persona = $request->input('persona');
+        $edad = $request->input('edad');
+        $interes = $request->input('interes');
 
-        //$result = DB::insert("insert into atractivos(nombre, imagen, lugar, ubicacion, descripcion, video, clase) values(".$nombre.",".$imagen.",".$lugar.",".$mapa.",".$mensaje.",".$video.",".$tipo.");");
-        $result = "insert into atractivos(nombre, imagen, lugar, ubicacion, descripcion, video, clase) values(".$nombre.",".$imagen.",".$lugar.",".$mapa.",".$mensaje.",".$video.",".$tipo.");";
-        return $result;
+        $id = DB::table('atractivos')->insertGetId(
+            [
+                'nombre' => $nombre,
+                'imagen' => $imagen,
+                'lugar' => $lugar,
+                'ubicacion' => $mapa,
+                'descripcion' => $mensaje,
+                'video' => $video,
+                'clase' => $tipo
+            ]
+        );
+
+        DB::table('valores')->insert(
+            [
+                'destino' => $destino,
+                'persona' => $persona,
+                'edad' => $edad,
+                'interes' => $interes
+            ]
+        );
+
+        return $id;
     }
 }
