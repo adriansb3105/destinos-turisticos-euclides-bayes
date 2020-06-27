@@ -20,7 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('atractivos/{destino}/{persona}/{edad}/{interes}', ['as' => 'atractivos', 'uses' => 'AtractivosAppController@getAtractivosEuclides']);
 
-Route::get('tipos/{destino}/{persona}/{edad}/{interes}', ['as' => 'tipos', 'uses' => 'AtractivosAppController@getTiposBayes']);
+//Route::get('tipos/{destino}/{persona}/{edad}/{interes}', ['as' => 'tipos', 'uses' => 'AtractivosAppController@getTiposBayes']);
+Route::post('tipos', 'AtractivosAppController@getTiposBayes');
 
 Route::get('atractivosTodos', 'AtractivosAppController@getAtractivosTodos');
 

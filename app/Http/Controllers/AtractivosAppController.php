@@ -21,9 +21,14 @@ class AtractivosAppController extends Controller
         
         return $atractivos;
     }
-
-    public function getTiposBayes($destino, $persona, $edad, $interes)
+    
+    public function getTiposBayes(Request $request)
     {
+        $destino = $request->input('destino');
+        $persona = $request->input('persona');
+        $edad = $request->input('edad');
+        $interes = $request->input('interes');
+
         $tipos = DB::table('valores')->select('destino', 'persona', 'edad', 'interes', 'clase')->get();
 
         $busqueda = [$destino, $persona, $edad, $interes];

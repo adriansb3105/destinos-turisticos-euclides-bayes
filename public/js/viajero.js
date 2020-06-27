@@ -83,8 +83,14 @@ function descubrir() {
     let interesTipo = document.getElementById('interesTipo').value.valueOf();
 
     $.ajax({
-        type: "GET",
-        url: `/api/tipos/${destinoTipo}/${cantidadTipo}/${edadTipo}/${interesTipo}`,
+        type: "POST",
+        url: `/api/tipos`,
+        data: {
+            destino: destinoTipo,
+            persona: cantidadTipo,
+            edad: edadTipo,
+            interes: interesTipo
+        },
         success: function(data) {
             switch (data) {
                 case `c1`:
