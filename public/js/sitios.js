@@ -1,116 +1,71 @@
-let atractivos = {};
+let querySet = {};
+let noResultados = document.getElementById('NoResultados');
 
 $.ajax({
     type: "GET",
     url: '/api/atractivosTodos',
     success: function(data) {
-        atractivos = data;
-        pagination();
+        querySet = data;
+        if (querySet.length) {
+            noResultados.style.display = "none";
+        } else {
+            noResultados.style.display = "block";
+        }
+        crearTabla()
     }
 });
-
-function pagination() {
-    let limite = 10;
-    let paginacion = document.getElementById("paginacion");
-    let numeroTabs = Math.ceil(atractivos.length / limite);
-    let noResultados = document.getElementById("NoResultados");
-
-    if (atractivos.length) {
-        let inicio = 0;
-        let fin = 0;
-        //noResultados.style.display = "none";
-
-        /*paginacion.innerHTML = `<li class="page-item disabled"><a class="page-link" href="javascript:prevPage()" id="btn_prev" tabindex="-1">Anterior</a></li>`;
-        if (atractivos.length > limite) {
-            for (let i = 1; i <= numeroTabs; i++) {
-                if (i === 1) {
-                    paginacion.innerHTML += `<li class="page-item active"><a class="page-link" href="#">${i}</a></li>`;
-                } else {
-                    paginacion.innerHTML += `<li class="page-item"><a class="page-link" href="#">${i}</a></li>`;
-                }
-            }
-        } else if (atractivos.length <= limite && atractivos.length > 0) {
-            inicio = fin = 0;
-            paginacion.innerHTML += `<li class="page-item active"><a class="page-link" href="#">${i}</a></li>`;
-        }
-        paginacion.innerHTML += `<li class="page-item disabled"><a class="page-link" href="javascript:nextPage()" id="btn_next">Siguiente</a></li>`;
-*/
-        cargarTabla();
-
-    } else {
-        noResultados.style.display = "block";
-    }
-}
-
-function cargarTabla() {
-
-    let tabla = document.getElementById("tablaAtractivos");
-
-    for (let i = 0; i < atractivos.length; i++) {
-        let fila = tabla.insertRow(i + 1);
-        let clase = "";
-
-        let celdaImagen = fila.insertCell(0);
-        let celdaNombre = fila.insertCell(1);
-        let celdaLugar = fila.insertCell(2);
-        let celdaClase = fila.insertCell(3);
-        let celdaAccion = fila.insertCell(4);
-        //let celdaUbicacion = fila.insertCell(3);
-        //let celdaDescripcion = fila.insertCell(4);
-
-        switch (atractivos[i].clase) {
-            case `c1`:
-                clase = `Pack`;
-                break;
-            case `c2`:
-                clase = `Urbano`;
-                break;
-            case `c3`:
-                clase = `Playero`;
-                break;
-            case `c4`:
-                clase = `Visitante`;
-                break;
-            case `c5`:
-                clase = `Gourmet`;
-                break;
-            case `c6`:
-                clase = `Insaciable`;
-                break;
-            default:
-                clase = `Oportunista`;
-                break;
-        }
-
-        celdaClase.innerHTML = clase;
-        celdaImagen.innerHTML = `<img src="${atractivos[i].imagen}" width="250" height="150" alt="${atractivos[i].nombre}" />`;
-        celdaNombre.innerHTML = atractivos[i].nombre;
-        celdaLugar.innerHTML = atractivos[i].lugar;
-
-        celdaAccion.innerHTML += `<button type="button" onclick="eliminarSitio(${atractivos[i]});" class="btn btn-danger btn-sm mt-4 mb-4 ml-1 float-right">Eliminar</button>`;
-        celdaAccion.innerHTML += `<button onclick="llenarEditarSitio(${JSON.stringify(atractivos[i]).split('"').join("&quot;")});" type="button" class="btn btn-warning btn-sm mt-4 mb-4 mr-1 float-right" data-toggle="modal" data-target="#exampleModalCenterEditar">Editar</button>`;
-
-        //celdaUbicacion.innerHTML = atractivos[i].ubicacion;
-        //celdaDescripcion.innerHTML = atractivos[i].descripcion;
-    }
-}
 
 function insertarSitio() {
     let nombre = document.getElementById('nombre').value.valueOf();
     let tipo = document.getElementById('tipo').value.valueOf();
-    let imagenes = document.getElementById('imagenes').value.valueOf();
     let lugar = document.getElementById('lugar').value.valueOf();
     let mensaje = document.getElementById('mensaje').value.valueOf();
-    let mapa = ""; //document.getElementById('mapa').value.valueOf();
+    let mapa = "mapa";
     let video = document.getElementById('video').value.valueOf();
 
-    $.ajax({
-        type: "POST",
-        url: '/api/agregarAtractivo',
-        success: function(data) {
-            console.log(data);
-        }
-    });
+    switch (tipo) {
+        case `pack`:
+            tipo = `c1`;
+            break;
+        case `urbano`:
+            tipo = `c2`;
+            break;
+        case `playero`:
+            tipo = `c3`;
+            break;
+        case `visitante`:
+            tipo = `c4`;
+            break;
+        case `gourmet`:
+            tipo = `c5`;
+            break;
+        case `insaciable`:
+            tipo = `c6`;
+            break;
+        default:
+            tipo = `c7`;
+            break;
+    }
+
+    if (nombre && tipo && lugar && mensaje && video) {
+        $.ajax({
+            type: "POST",
+            //url: `/api/agregarAtractivo/${nombre}/${tipo}/${imagen}/${lugar}/${mensaje}/${mapa}/${video}`,
+            url: `/api/agregarAtractivo`,
+            data: {
+                nombre: nombre,
+                tipo: tipo,
+                imagen: 'http://www.sanisidrolonas.com.ar/wp-content/uploads/2013/07/sin-imagen3.jpg',
+                lugar: lugar,
+                mensaje: mensaje,
+                mapa: mapa,
+                video: video
+            },
+            success: function(data) {
+
+            }
+        });
+    }
 }
 
 function llenarEditarSitio(atractivo) {
@@ -155,4 +110,47 @@ function editarSitio() {
 
 function eliminarSitio(atractivo) {
     console.log(atractivo);
+}
+
+function crearTabla() {
+    var tabla = $('#table-body')
+
+    for (var i = 1 in querySet) {
+        let clase = "";
+        switch (querySet[i].clase) {
+            case `c1`:
+                clase = `Pack`;
+                break;
+            case `c2`:
+                clase = `Urbano`;
+                break;
+            case `c3`:
+                clase = `Playero`;
+                break;
+            case `c4`:
+                clase = `Visitante`;
+                break;
+            case `c5`:
+                clase = `Gourmet`;
+                break;
+            case `c6`:
+                clase = `Insaciable`;
+                break;
+            default:
+                clase = `Oportunista`;
+                break;
+        }
+
+        var fila = `<tr>
+        <td><img src="${querySet[i].imagen}" width = "250" height="150" alt="${querySet[i].nombre}" /></td>
+        <td>${querySet[i].nombre}</td>
+        <td>${querySet[i].lugar}</td>
+        <td>${clase}</td>
+        <td>
+            <button onclick="llenarEditarSitio(${JSON.stringify(querySet[i]).split('"').join("&quot;")});" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalCenterEditar">Editar</button>
+            <button type="button" onclick="eliminarSitio(${querySet[i]});" class="btn btn-danger btn-sm">Eliminar</button>
+        </td></tr>`;
+
+        tabla.append(fila)
+    }
 }

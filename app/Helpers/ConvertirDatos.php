@@ -4,6 +4,9 @@ namespace App\Helpers;
 
 class ConvertirDatos
 {
+  /**
+   * Obtiene el valor númerico del valor dado en caso de que no sea un valor numéricos
+   */
   public static function valor($valor)
   {
     switch ($valor) {

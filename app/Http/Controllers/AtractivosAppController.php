@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Algoritmo\NaiveBayes;
 use App\Helpers\Algoritmo\Euclides;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,8 +28,7 @@ class AtractivosAppController extends Controller
 
         $busqueda = [$destino, $persona, $edad, $interes];
 
-        $clase = Euclides::euclides($busqueda, $tipos);
-        
+        $clase = NaiveBayes::bayes($tipos, $busqueda);
         return $clase;
     }
 
@@ -37,9 +37,27 @@ class AtractivosAppController extends Controller
         $atractivos = DB::table('atractivos')->select('id', 'nombre', 'imagen', 'lugar', 'ubicacion', 'descripcion', 'video', 'clase')->get();
         return $atractivos;
     }
-
-    public function agregarAtractivo(Request $req)
+/*
+    public function agregarAtractivo($nombre, $tipo, $imagen, $lugar, $mensaje, $mapa, $video)
     {
-        return $req->input();
+        //$result = DB::insert("insert into atractivos(nombre, imagen, lugar, ubicacion, descripcion, video, clase) values(".$nombre.",".$imagen.",".$lugar.",".$mapa.",".$mensaje.",".$video.",".$tipo.");");
+        $result = "insert into atractivos(nombre, imagen, lugar, ubicacion, descripcion, video, clase) values(".$nombre.",".$imagen.",".$lugar.",".$mapa.",".$mensaje.",".$video.",".$tipo.");";
+        return $result;
+    }
+    */
+
+    public function agregarAtractivo(Request $request)
+    {
+        $nombre = $request->input('nombre');
+        $tipo = $request->input('tipo');
+        $imagen = $request->input('imagen');
+        $lugar = $request->input('lugar');
+        $mensaje = $request->input('mensaje');
+        $mapa = $request->input('mapa');
+        $video = $request->input('video');
+
+        //$result = DB::insert("insert into atractivos(nombre, imagen, lugar, ubicacion, descripcion, video, clase) values(".$nombre.",".$imagen.",".$lugar.",".$mapa.",".$mensaje.",".$video.",".$tipo.");");
+        $result = "insert into atractivos(nombre, imagen, lugar, ubicacion, descripcion, video, clase) values(".$nombre.",".$imagen.",".$lugar.",".$mapa.",".$mensaje.",".$video.",".$tipo.");";
+        return $result;
     }
 }
