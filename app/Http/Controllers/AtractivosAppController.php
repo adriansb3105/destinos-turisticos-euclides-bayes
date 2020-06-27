@@ -34,7 +34,7 @@ class AtractivosAppController extends Controller
         $busqueda = [$destino, $persona, $edad, $interes];
 
         $clase = NaiveBayes::bayes($tipos, $busqueda);
-        return $clase;
+        return $tipos;
     }
 
     public function getAtractivosTodos()
