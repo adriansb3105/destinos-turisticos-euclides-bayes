@@ -92,6 +92,9 @@ function descubrir() {
             interes: interesTipo
         },
         success: function(data) {
+            console.log(data);
+
+
             switch (data) {
                 case `c1`:
                     clase = `Pack`;
