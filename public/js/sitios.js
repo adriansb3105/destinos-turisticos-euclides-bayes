@@ -46,11 +46,11 @@ function insertarSitio() {
                 interes: interes
             },
             success: function(data) {
-                document.getElementById('respuesta').innerHTML = "Se ha insertado el sitio correctamente";
-                console.log("Se ha insertado el sitio correctamente");
-
+                alert("Se ha insertado el sitio correctamente");
             }
         });
+
+        crearTabla();
     }
 }
 
@@ -88,18 +88,83 @@ function llenarEditarSitio(atractivo) {
     document.getElementById('mensajeEditar').value = atractivo.descripcion;
     let mapa = ""; //document.getElementById('mapaEditar').value = atractivo.
     document.getElementById('videoEditar').value = atractivo.video;
+    document.getElementById('destinoEditar').value = atractivo.video;
+    document.getElementById('personaEditar').value = atractivo.video;
+    document.getElementById('edadEditar').value = atractivo.video;
+    document.getElementById('interesEditar').value = atractivo.video;
+
 }
 
 function editarSitio() {
-    console.log(document.getElementById('idEditar').value);
+    let id = document.getElementById('idEditar').value.valueOf();
+    let nombre = document.getElementById('nombreEditar').value.valueOf();
+    let tipo = document.getElementById('tipoEditar').value.valueOf();
+    let lugar = document.getElementById('lugarEditar').value.valueOf();
+    let mensaje = document.getElementById('mensajeEditar').value.valueOf();
+    let destino = document.getElementById('destinoEditar').value.valueOf();
+    let persona = document.getElementById('personaEditar').value.valueOf();
+    let edad = document.getElementById('edadEditar').value.valueOf();
+    let interes = document.getElementById('interesEditar').value.valueOf();
+    let mapa = "mapaEditar";
+    let imagen = 'https://upload.wikimedia.org/wikipedia/commons/1/12/Sanatorio_Duran_%281%29.JPG';
+    let video = document.getElementById('videoEditar').value.valueOf();
+
+    if (id && nombre && tipo && lugar && mensaje && mapa && imagen && video && destino && persona && edad && interes) {
+        $.ajax({
+            type: "POST",
+            url: `/api/editarAtractivo`,
+            data: {
+                id: id,
+                nombre: nombre,
+                tipo: tipo,
+                imagen: imagen,
+                lugar: lugar,
+                mensaje: mensaje,
+                mapa: mapa,
+                video: video,
+                destino: destino,
+                persona: persona,
+                edad: edad,
+                interes: interes
+            },
+            success: function(data) {
+                alert("Se ha actualizado el sitio correctamente");
+            }
+        });
+
+        //<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+
+
+        crearTabla();
+    }
 }
 
 function eliminarSitio(atractivo) {
-    console.log(atractivo);
+    let id = atractivo.id;
+    if (id) {
+        let confirmacion = confirm("¿Confirma que desea eliminar el atractivo?");
+
+        if (confirmacion == true) {
+            $.ajax({
+                type: "POST",
+                url: `/api/eliminarAtractivo`,
+                data: {
+                    id: id
+                },
+                success: function(data) {
+                    alert("Se ha elimando el sitio correctamente");
+                }
+            });
+
+            crearTabla();
+        }
+    }
 }
 
 function crearTabla() {
-    var tabla = $('#table-body')
+    let tabla = $('#table-body')
+
+    //console.log(querySet);
 
     for (var i = 1 in querySet) {
         let clase = "";
@@ -134,7 +199,7 @@ function crearTabla() {
         <td>${clase}</td>
         <td>
             <button onclick="llenarEditarSitio(${JSON.stringify(querySet[i]).split('"').join("&quot;")});" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalCenterEditar">Editar</button>
-            <button type="button" onclick="eliminarSitio(${querySet[i]});" class="btn btn-danger btn-sm">Eliminar</button>
+            <button type="button" onclick="eliminarSitio(${JSON.stringify(querySet[i]).split('"').join("&quot;")});" class="btn btn-danger btn-sm">Eliminar</button>
         </td></tr>`;
 
         tabla.append(fila)

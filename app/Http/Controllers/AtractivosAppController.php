@@ -40,17 +40,9 @@ class AtractivosAppController extends Controller
 
     public function getAtractivosTodos()
     {
-        $atractivos = DB::table('atractivos')->select('id', 'nombre', 'imagen', 'lugar', 'ubicacion', 'descripcion', 'video', 'clase')->get();
+        $atractivos = DB::select('select id, nombre, imagen, lugar, ubicacion, descripcion, video, clase from atractivos;');
         return $atractivos;
     }
-    /*
-    public function agregarAtractivo($nombre, $tipo, $imagen, $lugar, $mensaje, $mapa, $video)
-    {
-        //$result = DB::insert("insert into atractivos(nombre, imagen, lugar, ubicacion, descripcion, video, clase) values(".$nombre.",".$imagen.",".$lugar.",".$mapa.",".$mensaje.",".$video.",".$tipo.");");
-        $result = "insert into atractivos(nombre, imagen, lugar, ubicacion, descripcion, video, clase) values(".$nombre.",".$imagen.",".$lugar.",".$mapa.",".$mensaje.",".$video.",".$tipo.");";
-        return $result;
-    }
-    */
 
     public function agregarAtractivo(Request $request)
     {
@@ -65,7 +57,7 @@ class AtractivosAppController extends Controller
         $persona = $request->input('persona');
         $edad = $request->input('edad');
         $interes = $request->input('interes');
-
+        
         $id = DB::table('atractivos')->insertGetId(
             [
                 'nombre' => $nombre,
@@ -83,10 +75,60 @@ class AtractivosAppController extends Controller
                 'destino' => $destino,
                 'persona' => $persona,
                 'edad' => $edad,
-                'interes' => $interes
+                'interes' => $interes,
+                'clase' => $tipo
             ]
         );
 
         return $id;
     }
+
+    public function editarAtractivo(Request $request)
+    {
+        $id = $request->input('id');
+        $nombre = $request->input('nombre');
+        $tipo = $request->input('tipo');
+        $imagen = $request->input('imagen');
+        $lugar = $request->input('lugar');
+        $mensaje = $request->input('mensaje');
+        $mapa = $request->input('mapa');
+        $video = $request->input('video');
+        $destino = $request->input('destino');
+        $persona = $request->input('persona');
+        $edad = $request->input('edad');
+        $interes = $request->input('interes');
+
+        $atractivo = DB::table('atractivos')
+              ->where('id', $id)
+              ->update([
+                'nombre' => $nombre,
+                'imagen' => $imagen,
+                'lugar' => $lugar,
+                'ubicacion' => $mapa,
+                'descripcion' => $mensaje,
+                'video' => $video,
+                'clase' => $tipo
+            ]);
+
+        DB::table('valores')->insert(
+            [
+                'destino' => $destino,
+                'persona' => $persona,
+                'edad' => $edad,
+                'interes' => $interes,
+                'clase' => $tipo
+            ]
+        );
+
+        return $atractivo;
+    }
+
+    public function eliminarAtractivo(Request $request)
+    {
+        $id = $request->input('id');
+
+        DB::table('atractivos')->where('id', '=', $id)->delete();
+
+        return $id;
+    }    
 }

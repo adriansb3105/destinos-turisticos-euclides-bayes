@@ -87,7 +87,7 @@
                     </div>
 
                     <div class="form-group mt-3">
-                        <label for="cantidad">Cantidad de personas</label>
+                        <label for="persona">Cantidad de personas</label>
                         <select class="form-control" id="persona">
                             <option value="1">Familia</option>
                             <option value="2">Pareja</option>
@@ -119,10 +119,6 @@
 
                     <div class="content">
                         <button onclick="insertarSitio();" type="submit" class="btn btn-round">Agregar</button>
-                    </div>
-
-                    <div class="form-group mt-2">
-                        <label class="green-color flex-center" id="respuesta"></label>
                     </div>
                 </div>
             </div>
@@ -178,6 +174,50 @@
                     <div class="form-group mt-5">
                         <label for="videoEditar">Ingrese la URL del video que desea agregar al sitio</label>
                         <input type="text" class="form-control" id="videoEditar" placeholder="Ingrese el nombre del sitio turístico">
+                    </div>
+
+
+
+
+                    <div class="form-group mt-3">
+                        <label for="destinoEditar">Destino</label>
+                        <select class="form-control" id="destinoEditar">
+                            <option value="1">Playa</option>
+                            <option value="2">Ciudad</option>
+                            <option value="3">Montaña</option>
+                            <option value="4">Rural</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label for="personaEditar">Cantidad de personas</label>
+                        <select class="form-control" id="personaEditar">
+                            <option value="1">Familia</option>
+                            <option value="2">Pareja</option>
+                            <option value="3">Amigos</option>
+                            <option value="4">Solo</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label for="edadEditar">Rango de edad</label>
+                        <select class="form-control" id="edadEditar">
+                            <option value="1">De 18 a 35 años</option>
+                            <option value="2">De 36 a 55 años</option>
+                            <option value="3">Mayores o iguales a 56 años</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label for="interesEditar">Intereses</label>
+                        <select class="form-control" id="interesEditar">
+                            <option value="1">Cultura</option>
+                            <option value="2">Historia</option>
+                            <option value="3">Relajación</option>
+                            <option value="4">Actualidad</option>
+                            <option value="5">Gastronomía</option>
+                            <option value="6">Entretenimiento</option>
+                        </select>
                     </div>
 
                     <div class="content">

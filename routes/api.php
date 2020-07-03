@@ -27,4 +27,8 @@ Route::get('atractivosTodos', 'AtractivosAppController@getAtractivosTodos');
 
 Route::post('agregarAtractivo', 'AtractivosAppController@agregarAtractivo');
 
+Route::post('editarAtractivo', 'AtractivosAppController@editarAtractivo');
+
+Route::post('eliminarAtractivo', 'AtractivosAppController@eliminarAtractivo');
+
 Route::get('administrador/{usuario}/{contrasena}', ['as' => 'usuarios', 'uses' => 'UsuariosController@login']);
