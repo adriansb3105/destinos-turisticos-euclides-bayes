@@ -67,7 +67,7 @@
     <div class="col-9">
         <div class="row">
             <!-- Cambiar usuario por el que se envia desde Euclides -->
-            <h5 id="msjTipoViajero" class="mt-2 green-font">Su tipo de viajero es <span class="text-bold" id="tipoViajeroBusqueda">X</span></h5>
+            <h5 id="msjTipoViajero" class="mt-2 green-font">Su tipo de viajero es <span class="text-bold" id="tipoViajeroBusqueda"></span></h5>
         </div>
         <div class="row mt-3">
             <div class="col">

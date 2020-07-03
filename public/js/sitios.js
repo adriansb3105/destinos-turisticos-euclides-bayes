@@ -92,6 +92,10 @@ function llenarEditarSitio(atractivo) {
     document.getElementById('personaEditar').value = atractivo.video;
     document.getElementById('edadEditar').value = atractivo.video;
     document.getElementById('interesEditar').value = atractivo.video;
+    document.getElementById('destinoEditar').value = 1;
+    document.getElementById('personaEditar').value = 1;
+    document.getElementById('edadEditar').value = 1;
+    document.getElementById('interesEditar').value = 1;
 
 }
 
@@ -128,12 +132,10 @@ function editarSitio() {
                 interes: interes
             },
             success: function(data) {
+                $('#exampleModalCenterEditar').modal('hide');
                 alert("Se ha actualizado el sitio correctamente");
             }
         });
-
-        //<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-
 
         crearTabla();
     }
